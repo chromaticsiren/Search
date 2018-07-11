@@ -1,0 +1,11 @@
+Rest based WebService project which will do the following
+
+1. Index the data using lucene which is sent in the webservice request
+    Data has to be sent as a JSON string.
+    The JSON string is then Deserialized to List and then indexed.
+    
+2. For querying, jsp is used as input interface (this is not completely built, W.I.P)
+
+3. Built on Java 8 and Tomcat 8.5.32
+
+4. Web service client is not part of this project.
