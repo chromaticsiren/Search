@@ -14,6 +14,7 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
+import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
 import  com.RSearch.IndexingServices.*;
@@ -35,7 +36,7 @@ public class SearchUtils extends DataIndexingUtils
 			
 			//Searches the input string against the "type" field in the index
 			//Full type name has to be given as input -- not case sensitive.(Example: VPMReference or vpmreference)
-			Query q = new QueryParser("type", analyzer).parse(querystr);
+			Query q = new QueryParser("name", analyzer).parse(querystr);
 			
 			
 			int hitsPerPage = 10;

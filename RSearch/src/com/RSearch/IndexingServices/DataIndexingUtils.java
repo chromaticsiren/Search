@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +58,22 @@ public class DataIndexingUtils {
 			
 			for(int i=0; i<inputList.size(); i++)
 			{
+				Map<?, ?> mTemp = (HashMap<?, ?>)inputList.get(i);
+				
+				Iterator<?> entries = mTemp.entrySet().iterator();
+				
+				while (entries.hasNext()) 
+				{
+				    Map.Entry entry = (Map.Entry) entries.next();
+				    
+//				    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+				    
+					doc = new Document();
+					doc.add(new TextField((String)entry.getKey(), (String)entry.getValue(), Field.Store.YES));
+					w.addDocument(doc);
+				}
+				
+				/*
 				strType = (String)((HashMap)(inputList.get(i))).get("type");
 				strName = (String)((HashMap)(inputList.get(i))).get("type");
 				strRevision = (String)((HashMap)(inputList.get(i))).get("type");
@@ -69,7 +86,7 @@ public class DataIndexingUtils {
 				doc.add(new TextField("revision", strRevision, Field.Store.YES));
 				doc.add(new StringField("id", strid, Field.Store.YES));
 				doc.add(new TextField("description", strDescription, Field.Store.YES));
-				w.addDocument(doc);
+				w.addDocument(doc);*/
 
 			}
 		}
