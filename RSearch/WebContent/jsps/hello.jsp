@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Hello</title>
+<title>RSearch</title>
 </head>
 <body>
 <h2>Hi There!</h2>

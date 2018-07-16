@@ -20,13 +20,7 @@ th {
 </style>
 
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Hello</title>
-</head>
-<body>
-<h2>Hi There!</h2>
-<br>
-<h3>Date=<%= new Date() %>
-</h3>
+
 
 <%
 	String sQuery = request.getParameter("searchquery");

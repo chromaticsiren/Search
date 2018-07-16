@@ -17,6 +17,7 @@ List<Map> lInput= mapper.readValue(strResults, List.class);
 
 <html>
 <head>
+<title>RSearch</title>
 <style>
 table, th, td {
     border: 1px solid black;
