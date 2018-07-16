@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -26,6 +28,7 @@ import org.apache.lucene.store.FSDirectory;
 
 public class DataIndexingUtils {
 	
+	protected static Set<String> docFieldsSet = new HashSet<String>();
 	
 	protected void indexData (List<Map> inputList) throws Exception
 	{
@@ -42,6 +45,10 @@ public class DataIndexingUtils {
 		 addDoc(w, inputList);
 		 w.close();
 	 }
+	  /* for (String temp : docFieldsSet)
+	   {
+       		System.out.println("docFieldsSet Contents:::"+temp);
+       }*/
 	}
 	
 	private static void addDoc(IndexWriter w, List<Map> inputList) throws IOException 
@@ -49,16 +56,11 @@ public class DataIndexingUtils {
 		
 		if(inputList != null && inputList.size() >0)
 		{
-			Document doc = null;
-			String strType = "";
-			String strName = "";
-			String strRevision = ""; 
-			String strid = "";
-			String strDescription = "";
-			
 			for(int i=0; i<inputList.size(); i++)
 			{
 				Map<?, ?> mTemp = (HashMap<?, ?>)inputList.get(i);
+				
+				Document doc = new Document();
 				
 				Iterator<?> entries = mTemp.entrySet().iterator();
 				
@@ -68,10 +70,12 @@ public class DataIndexingUtils {
 				    
 //				    System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 				    
-					doc = new Document();
+				    docFieldsSet.add((String)entry.getKey());
+				    
 					doc.add(new TextField((String)entry.getKey(), (String)entry.getValue(), Field.Store.YES));
-					w.addDocument(doc);
 				}
+				w.addDocument(doc);
+				
 				
 				/*
 				strType = (String)((HashMap)(inputList.get(i))).get("type");

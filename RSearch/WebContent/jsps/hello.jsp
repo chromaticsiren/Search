@@ -13,7 +13,7 @@
 <body>
 <h2>Hi There!</h2>
 <br>
-<h3>Date=<%= new Date() %>
+<h3>Date = <%= new Date() %>
 </h3>
 
 
@@ -25,14 +25,9 @@
  <br>
  <br>
  
- <FORM NAME="searchform"  action="jsps/SearchPreProcess.jsp" METHOD="POST"> 
+ <FORM NAME="searchform"  action="jsps/SearchPreProcess.jsp" METHOD="POST">
        <input type="text" name= "searchquery" id="searchquery" placeholder="Enter Search Query"/>
        <input type="submit" value="Search" />
-</FORM>
-
- <FORM NAME="searchform"  action="jsps/SearchPreProcess.jsp" METHOD="GET"> 
-
-
 </FORM>
 
 </body>
